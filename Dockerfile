@@ -10,7 +10,7 @@ MAINTAINER Savant Krishna <savant@quanti.care>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y cmake ninja-build wget unzip gcc g++ gstreamer1.0-libav libgstreamer1.0-dev libgstreamer-plugins-bad1.0-dev libgstreamer-plugins-good1.0-dev libgstreamer-plugins-base1.0-dev libpython-dev python-numpy libboost-all-dev libcurl4-openssl-dev &&\
-  wget https://github.com/Itseez/opencv/archive/2.4.11.zip && \
+  wget --quiet https://github.com/Itseez/opencv/archive/2.4.11.zip && \
   unzip 2.4.11.zip && \
   cd opencv-2.4.11/ && \
   mkdir build && cd build && \
