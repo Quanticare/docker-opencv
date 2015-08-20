@@ -16,10 +16,10 @@ RUN apt-get update && apt-get install -y cmake ninja-build wget unzip gcc g++ gs
   mkdir build && cd build && \
   cmake .. -DWITH_FFMPEG=OFF -DWITH_GSTREAMER=ON -DWITH_OPENMP=ON -DBUILD_DOCS=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_EXAMPLES=OFF -DWITH_QT=OFF -DWITH_GTK=OFF -DWITH_OPENGL=OFF -DWITH_VTK=OFF -DWITH_1394=OFF -GNinja -DCMAKE_INSTALL_PREFIX=/usr/ && \
   ninja install && \
-  cd / && rm -rf 2.4.11.zip opencv-2.4.11/ && \
+  wget --quiet https://github.com/google/glog/archive/v0.3.3.zip && unzip v0.3.3.zip && \
+  cd glog-0.3.3/ && ./configure --prefix=/usr && make install -j8 && \
+  cd / && rm -rf 2.4.11.zip opencv-2.4.11/ glog-0.3.3/ v0.3.3.zip && \
   apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-#RUN wget https://github.com/google/glog/archive/v0.3.4.zip && unzip v0.3.4.zip
 
-#RUN cd glog-0.3.4/ && ./configure --prefix=/usr && make install -j8
