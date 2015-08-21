@@ -9,7 +9,7 @@ MAINTAINER Savant Krishna <savant@quanti.care>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y cmake ninja-build wget unzip gcc g++ gstreamer1.0-libav libgstreamer1.0-dev libgstreamer-plugins-bad1.0-dev libgstreamer-plugins-good1.0-dev libgstreamer-plugins-base1.0-dev libpython-dev python-numpy libboost-all-dev libcurl4-openssl-dev &&\
+RUN apt-get update && apt-get install -y cmake ninja-build wget unzip gcc g++ gstreamer1.0-libav libgstreamer1.0-dev libgstreamer-plugins-bad1.0-dev libgstreamer-plugins-good1.0-dev libgstreamer-plugins-base1.0-dev libpython-dev python-numpy libboost-all-dev libcurl4-openssl-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-tools && \
   wget --quiet https://github.com/Itseez/opencv/archive/2.4.11.zip && \
   unzip 2.4.11.zip && \
   cd opencv-2.4.11/ && \
@@ -21,6 +21,4 @@ RUN apt-get update && apt-get install -y cmake ninja-build wget unzip gcc g++ gs
   cd / && rm -rf 2.4.11.zip opencv-2.4.11/ glog-0.3.3/ v0.3.3.zip && \
   apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-
-RUN apt-get update && apt-get install -y gstreamer1.0-libav gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-tools && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
