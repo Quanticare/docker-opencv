@@ -3,7 +3,8 @@
 # Copyright (c) 2015- Quanticare Technologies
 
 # Base image
-FROM ubuntu:14.04.2
+FROM quay.io/quanticare/cuda
+#FROM ubuntu:14.04.2
 
 MAINTAINER Savant Krishna <savant@quanti.care>
 
@@ -14,7 +15,7 @@ RUN apt-get update && apt-get install -y cmake ninja-build wget unzip gcc g++ gs
   unzip 2.4.11.zip && \
   cd opencv-2.4.11/ && \
   mkdir build && cd build && \
-  cmake .. -DWITH_FFMPEG=OFF -DWITH_GSTREAMER=ON -DWITH_OPENMP=ON -DBUILD_DOCS=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_EXAMPLES=OFF -DWITH_QT=OFF -DWITH_GTK=OFF -DWITH_OPENGL=OFF -DWITH_VTK=OFF -DWITH_1394=ON -GNinja -DCMAKE_INSTALL_PREFIX=/usr/ && \
+  cmake .. -DWITH-CUDA=ON -DWITH_FFMPEG=OFF -DWITH_GSTREAMER=ON -DWITH_OPENMP=ON -DBUILD_DOCS=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_EXAMPLES=OFF -DWITH_QT=OFF -DWITH_GTK=OFF -DWITH_OPENGL=OFF -DWITH_VTK=OFF -DWITH_1394=ON -GNinja -DCMAKE_INSTALL_PREFIX=/usr/ && \
   ninja install && \
   wget --quiet https://github.com/google/glog/archive/v0.3.3.zip && unzip v0.3.3.zip && \
   cd glog-0.3.3/ && ./configure --prefix=/usr && make install -j8 && \
